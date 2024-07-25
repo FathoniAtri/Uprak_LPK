@@ -8,7 +8,7 @@ st.markdown(
     <style>
     .stApp {
         background-color: #CDFFAC;
-        color: black;
+        color: grey;
     }
     </style>
     """,
@@ -16,7 +16,10 @@ st.markdown(
 )
 
 # Judul aplikasi
-st.title("Kalkulator Perhitungan Oksigen untuk Pembakaran Batubara")
+st.title(":red[Kalkulator Perhitungan Oksigen untuk Pembakaran Batubara]")
+
+st.write(f"Kalkulator Perhitungan Oksigen untuk Pembakaran Batubara adalah alat atau sistem perangkat lunak yang digunakan untuk menghitung kebutuhan oksigen yang diperlukan dalam proses pembakaran batubara.")
+st.write(f"Tujuan: Memberikan estimasi atau hasil perhitungan yang akurat terkait dengan kebutuhan oksigen dalam proses pembakaran batubara. Ini membantu dalam perencanaan dan pengelolaan proses pembakaran secara efisien dan ekonomis.")
 
 #sidebar
 st.sidebar.title("Masukkan Data Massa Elemen")
@@ -73,14 +76,16 @@ if st.button("Hitung Oksigen yang Dibutuhkan"):
     oksigen_aktual = udara_berlebih * 0.21
     nitrogen_aktual = udara_berlebih * 0.79
     kg_oksigen = oksigen_aktual * 32
-    kg_nitrogen = nitrogen_aktual * 27.99322
+    kg_nitrogen = nitrogen_aktual * 27.9999999999
     udara_aktual = kg_oksigen + kg_nitrogen
 
     total_oxygen_needed = oxigen_for_karbon + oxigen_for_hidrogen + oxigen_for_sulfur + oxigen_for_nitrogen
 
 data_komposisi_udara = {
-        "Komposisi Udara": ["Komposisi Oksigen", "Komposisi Nitrogen"],
-        "Volume komposisi" : ["21%", "79%"]
+        "Komposisi Udara": ["Oksigen", "Nitrogen"],
+        "Persen komposisi (%)" : ["21", "79"],       
+        "Volume Udara (kmol/jam)" : [oksigen_aktual, nitrogen_aktual],
+        "Massa Aktual Udara (kg/jam)" : [kg_oksigen, kg_nitrogen ]
         }
 
 de = pd.DataFrame(data_komposisi_udara)
@@ -102,14 +107,34 @@ df['Oksigen yang Dibutuhkan (kg)'] = df['Oksigen yang Dibutuhkan (kg)'].round(4)
 
 st.write("Hasil Perhitungan Oksigen yang Dibutuhkan:")
 
-st.table(df)
+
+# Fungsi untuk styling
+def highlight_red(val):
+    color = 'red' if val != "" else 'grey'
+    return 'color: %s' % color
+
+# Terapkan styling menggunakan Styler
+styled_df = df.style.applymap(highlight_red)
+
+# Tampilkan dataframe yang sudah distyling
+styled_df
+
     
-st.write(f"Jumlah oksigen yang dibutuhkan untuk pembakaran adalah {mol_total:.2f} kmol/jam oksigen.")
-st.write(f"Dari {mol_total:.2f} kmol/jam oksigen yang digunakan menghasilkan Udara Stoikiometri sebesar {udara_stoikio:.2f} kmol/jam.")
-st.write(f"Dengan peranggapan komposisi pada udara sebagai berikut :")
-st.table(de)
-st.write(f"Dari {udara_stoikio:.2f} kmol/jam digunakan udara berlebih sebesar {udara_lebih:.2f}% menjadi {udara_berlebih:.2f} kmol/jam")
-st.write(f"dari {udara_berlebih:.2f} kmol/jam didapat {oksigen_aktual:.2f} kmol/jam oksigen dan {nitrogen_aktual:.2f} kmol/jam Nitrogen, dengan peranggapan komposisi udara nya sama")
-st.write(f"maka didapat {kg_oksigen:.2f} kg/jam oksigen dan {kg_nitrogen:.2f} kg/jam nitrogen")
-st.write(f"maka didapat total Udara Aktual seberat {udara_aktual:.2f} kg untuk 1 jam pembakaran Batubara seberat {kg_batubara:.2f} kg")
+st.write(f"Jumlah oksigen yang dibutuhkan untuk pembakaran adalah :blue-background[{mol_total:.2f}] kmol/jam oksigen.")
+st.write(f"Dari :blue-background[{mol_total:.2f}] kmol/jam oksigen yang digunakan menghasilkan udara stoikiometri sebesar :violet-background[{udara_stoikio:.2f}] kmol/jam.")
+st.write(f"Dari :violet-background[{udara_stoikio:.2f}] kmol/jam udara stoikiometri digunakan udara berlebih sebesar :blue-background[{udara_lebih:.2f}%] menjadi :red-background[{udara_berlebih:.2f}] kmol/jam.")
+st.write(f"Didapat massa Oksigen dan massa Nitrogen dari :red-background[{udara_berlebih:.2f}] kmol/jam udara berlebih sebesar :violet-background[{udara_lebih:.2f}%], Dengan peranggapan komposisi pada udaranya sebagai berikut :")
+
+# Fungsi untuk styling
+def highlight_red(val):
+    color = 'red' if val != "" else 'grey'
+    return 'color: %s' % color
+
+# Terapkan styling menggunakan Styler
+styled_de = de.style.applymap(highlight_red)
+
+# Tampilkan dataframe yang sudah distyling
+styled_de
+
+st.write(f"maka didapat total Udara Aktual sebesar :blue-background[{udara_aktual:.2f}] kg untuk 1 jam pembakaran Batubara seberat :red-background[{kg_batubara:.2f}] kg.")
 
