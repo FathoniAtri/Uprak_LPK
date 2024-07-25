@@ -17,9 +17,10 @@ st.markdown(
 
 # Judul aplikasi
 st.title(":red[Kalkulator Perhitungan Oksigen untuk Pembakaran Batubara]")
-
+st.header('', divider='rainbow')
 st.write(f"Kalkulator Perhitungan Oksigen untuk Pembakaran Batubara adalah alat atau sistem perangkat lunak yang digunakan untuk menghitung kebutuhan oksigen yang diperlukan dalam proses pembakaran batubara.")
-st.write(f"Tujuan: Memberikan estimasi atau hasil perhitungan yang akurat terkait dengan kebutuhan oksigen dalam proses pembakaran batubara. Ini membantu dalam perencanaan dan pengelolaan proses pembakaran secara efisien dan ekonomis.")
+st.subheader(f"Tujuan:")
+st.write(f"Memberikan estimasi atau hasil perhitungan yang akurat terkait dengan kebutuhan oksigen dalam proses pembakaran batubara. Ini membantu dalam perencanaan dan pengelolaan proses pembakaran secara efisien dan ekonomis.")
 
 #sidebar
 st.sidebar.title("Masukkan Data Massa Elemen")
@@ -120,10 +121,10 @@ styled_df = df.style.applymap(highlight_red)
 styled_df
 
     
-st.write(f"Jumlah oksigen yang dibutuhkan untuk pembakaran adalah :blue-background[{mol_total:.2f}] kmol/jam oksigen.")
-st.write(f"Dari :blue-background[{mol_total:.2f}] kmol/jam oksigen yang digunakan menghasilkan udara stoikiometri sebesar :violet-background[{udara_stoikio:.2f}] kmol/jam.")
-st.write(f"Dari :violet-background[{udara_stoikio:.2f}] kmol/jam udara stoikiometri digunakan udara berlebih sebesar :blue-background[{udara_lebih:.2f}%] menjadi :red-background[{udara_berlebih:.2f}] kmol/jam.")
-st.write(f"Didapat massa Oksigen dan massa Nitrogen dari :red-background[{udara_berlebih:.2f}] kmol/jam udara berlebih sebesar :violet-background[{udara_lebih:.2f}%], Dengan peranggapan komposisi pada udaranya sebagai berikut :")
+st.write(f"Jumlah mol oksigen yang dibutuhkan untuk pembakaran adalah :blue-background[{mol_total:.2f}] kmol/jam oksigen.")
+st.write(f"Dari jumlah mol oksigen tersebut, menghasilkan udara stoikiometri sebesar :violet-background[{udara_stoikio:.2f}] kmol/jam.")
+st.write(f"Dari udara stoikiometri tersebut, digunakan udara berlebih sebesar :blue-background[{udara_lebih:.2f}%], menjadi :red-background[{udara_berlebih:.2f}] kmol/jam.")
+st.write(f"Massa Oksigen dan Nitrogen dari udara berlebih sebesar :violet-background[{udara_lebih:.2f}%], Dengan asumsi komposisi udara sebagai berikut :")
 
 # Fungsi untuk styling
 def highlight_red(val):
