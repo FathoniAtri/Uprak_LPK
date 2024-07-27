@@ -23,7 +23,6 @@ tab1, tab2, tab3 = st.tabs(["Home", "Informasi Lanjut", "Aplikasi"])
 
 with tab1:
     st.subheader("Tentang aplikasi")
-    st.header('', divider='rainbow')
     st.write(f"Kalkulator Perhitungan Oksigen untuk Pembakaran Batubara adalah alat atau sistem perangkat lunak yang digunakan untuk menghitung kebutuhan oksigen yang diperlukan dalam proses pembakaran batubara.")
     
     st.subheader("Manfaat Kalkulator Kebutuhan Oksigen dan Udara Berlebih")
