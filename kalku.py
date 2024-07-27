@@ -20,7 +20,7 @@ st.title(":fire: :red[Kalkulator Perhitungan Oksigen untuk Pembakaran Batubara]"
 st.header('', divider='rainbow')
 
 # Membuat tab
-tab1, tab2, tab3 = st.tabs(["Home", "Informasi Lanjut", "Aplikasi"])
+tab1, tab2, tab3 = st.tabs(["Beranda", "Informasi Lanjut", "Aplikasi"])
 
 with tab1:
     st.subheader("Tentang aplikasi")
