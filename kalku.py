@@ -17,13 +17,13 @@ st.markdown(
 
 # Judul aplikasi
 st.title(":fire: :red[Kalkulator Perhitungan Oksigen untuk Pembakaran Batubara]")
-st.header('', divider='rainbow')
 
 # Membuat tab
-tab1, tab2, tab3 = st.tabs(["Beranda", "Informasi Lanjut", "Aplikasi"])
+tab1, tab2, tab3 = st.tabs(["Home", "Informasi Lanjut", "Aplikasi"])
 
 with tab1:
     st.subheader("Tentang aplikasi")
+    st.header('', divider='rainbow')
     st.write(f"Kalkulator Perhitungan Oksigen untuk Pembakaran Batubara adalah alat atau sistem perangkat lunak yang digunakan untuk menghitung kebutuhan oksigen yang diperlukan dalam proses pembakaran batubara.")
     
     st.subheader("Manfaat Kalkulator Kebutuhan Oksigen dan Udara Berlebih")
@@ -58,7 +58,9 @@ with tab1:
 with tab2:
 
 # Judul Utama
-    st.title("Perhitungan Kebutuhan Oksigen dan Udara untuk Pembakaran Batubara")
+    st.header("Perhitungan Kebutuhan Oksigen dan Udara untuk Pembakaran Batubara")
+    st.header('', divider='rainbow')
+
 
 # Subheader dan Deskripsi
     st.subheader("Menghitung Kebutuhan Oksigen")
@@ -112,6 +114,8 @@ with tab2:
 
 
 with tab3:
+    st.header("Silahkan INPUT data anda pada SIDE-BAR")
+    st.header('', divider='rainbow')
     # Sidebar hanya ditampilkan di tab ini
     st.sidebar.title("Masukkan Data Massa Elemen")
 
@@ -206,8 +210,8 @@ with tab3:
                 "Udara Stoikiometri (kmol/jam)",
                 "Udara Berlebih (%)",
                 "Udara Aktual (kmol/jam)",
-                "Oksigen Aktual (kmol/jam)21%",
-                "Nitrogen Aktual (kmol/jam)79%",
+                "Oksigen Aktual 21% (kmol/jam)",
+                "Nitrogen Aktual 79% (kmol/jam)",
                 "Massa Oksigen (kg/jam)",
                 "Massa Nitrogen (kg/jam)",
                 "Total Udara Aktual (kg/jam)"
@@ -239,6 +243,3 @@ with tab3:
 
 # Tampilkan dataframe yang sudah distyling
         styled_dr
-
-        
-
